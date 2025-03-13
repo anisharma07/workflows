@@ -1,28 +1,28 @@
-name: 🚀Game Enhancement Request
-description: Suggest your enhancement for the existing game 
-title: "[Enhancement]: "
+name: ✨ Feature Request
+description: Suggest a new feature
+title: "[New game]: "
 
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this enhancement request form
+        Thanks for taking the time to fill out your new game issue
   - type: textarea
-    id: bug-description
+    id: new-game
     attributes:
-      label: Do you want to have the enhancement of existing game ? 😀 Describe yourself..
-      description: Enter a brief description about the enhancement you need
-      placeholder: Give all the context of your enhancement as well as the existing game
-      value: "Game enhancement"
+      label: 🎮 Game Request
+      description: Describe the game logic and also give a brief about the features of the game
+      placeholder: add all necessary details required for your new game
+      value: "Game logic and basic description"
     validations:
       required: true
   - type: textarea
-    id: behaviour
+    id: features
     attributes:
-      label: Describe the solution you'd like
-      description: Give steps in which you will solve it
-      placeholder: Please include a summary, also include relevant motivation and context. 
-      value: "Solution steps"
+      label: Point down the features
+      description: think about your the feature your game will have
+      placeholder: Please include a summary, also include relevant motivation and context.
+      value: "Game points"
     validations:
       required: true
   - type: dropdown
@@ -31,8 +31,8 @@ body:
       label: Select program in which you are contributing
       multiple: true
       options:
-        - GSSoC24
         - IWOC2024
+        - GSSoC24
         - hacktoberfest
         - GSSoC23
         - Other

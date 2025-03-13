@@ -1,4 +1,4 @@
-name: 📚 Documentation or README.md issue report
+name: 📚 Documentation Update
 description: Report an issue in the project's documentation or README.md file.
 title: "[Documentation Bug]: "
 
@@ -12,7 +12,7 @@ body:
     attributes:
       label: Describe the bug ✍️
       description: Enter a brief description about the documentation bug report
-      placeholder: Please include a summary, also include relevant motivation and context. 
+      placeholder: Please include a summary, also include relevant motivation and context.
       value: "Describe your bug here"
     validations:
       required: true
@@ -21,7 +21,7 @@ body:
     attributes:
       label: Provide step by step information reproduce the bug 📄
       description: Enter the description on how you plan to find the bug's solution
-      placeholder: Please include a summary, also include relevant motivation and context. 
+      placeholder: Please include a summary, also include relevant motivation and context.
       value: "Description"
     validations:
       required: true
