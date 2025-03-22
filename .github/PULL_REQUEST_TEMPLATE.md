@@ -1,33 +1,21 @@
-<!-- What issue does this PR close? -->
+# Description
 
-Closes #
+Include a summary of the change and which issue is fixed. List any dependencies that are required for this change.
 
-## 📝 PR Description
+Fixes # (issue)
 
-<!-- A clear and concise description of what this pull request does. -->
+## Type of change
 
-## 🔧 Files Changed
+Please mark the options that are relevant.
 
-<!-- List the changes you made in this pull request. -->
-<!-- For example:
-- Fixed a bug in the login flow.
-- Added a new feature for user profile customization.
-- Updated documentation for API endpoints.
--->
+- [ ] Updated UI/UX
+- [ ] Improved the business logic of code
+- [ ] Added new feature
+- [ ] Other
 
-## 📷 Screenshots or Video (if applicable)
+## Checklist:
 
-<!-- Drag and drop screenshots here or provide a description of visual updates. -->
-
-## 🤝 Collaboration
-
-<!-- If you collaborated with someone on this pull request, mention their GitHub username or name here. -->
-
-Collaborated with: `@username` (optional)
-
-### ✅ Checklist
-
-- [ ] I have read the contributing guidelines.
-- [ ] I have linked the issue related to this PR
-- [ ] I have tested the code thoroughly and its working properly
-- [ ] I have added necessary documentation (if applicable).
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
