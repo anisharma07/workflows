@@ -1,35 +1,33 @@
-## PR Description 📜
+<!-- What issue does this PR close? -->
 
-Please include summary related to the issue you have fixed and describe your PR in brief over here by specifying the issue number on which you were working below
-Fixes # <your_issue_number>
+Closes #
 
-<hr>
- 
-## Mark the task you have completed ✅
+## 📝 PR Description
 
-<!----Please delete options that are not relevant. In order to tick the check box just but x inside them for example [x] like this----->
+<!-- A clear and concise description of what this pull request does. -->
 
-- [ ] I follow [CONTRIBUTING GUIDELINE](https://github.com/kunjgit/GameZone/blob/main/.github/CONTRIBUTING_GUIDELINE.md) & [CODE OF CONDUCT](https://github.com/kunjgit/GameZone/blob/main/.github/CODE_OF_CONDUCT.md) of this project.
-- [ ] I have performed a self-review of my own code or work.
-- [ ] I have commented my code, particularly in hard-to-understand areas.
-- [ ] My changes generates no new warnings.
-- [ ] I have followed proper naming convention showed in [CONTRIBUTING GUIDELINE](https://github.com/kunjgit/GameZone/blob/main/.github/CONTRIBUTING_GUIDELINE.md)
-- [ ] I have added screenshot for website preview in assets/images 
-- [ ] I have added entries for my game in GameZone's README.md
-- [ ] I have added README.md in my Game folder 
-- [ ] I have added working video of the game in README.md (optional)
-- [ ] I have specified the respective issue number for which I have requested the new game.
-- [ ] I have added my Game to gamesData.json file and it is loading properly on main website as intended.
+## 🔧 Files Changed
 
+<!-- List the changes you made in this pull request. -->
+<!-- For example:
+- Fixed a bug in the login flow.
+- Added a new feature for user profile customization.
+- Updated documentation for API endpoints.
+-->
 
-<hr>
+## 📷 Screenshots or Video (if applicable)
 
-## Add your screenshots(Optional) 📸
+<!-- Drag and drop screenshots here or provide a description of visual updates. -->
 
+## 🤝 Collaboration
 
+<!-- If you collaborated with someone on this pull request, mention their GitHub username or name here. -->
 
+Collaborated with: `@username` (optional)
 
---- 
-<br>
+### ✅ Checklist
 
-## Thank you soo much for contributing to our repository 💗
+- [ ] I have read the contributing guidelines.
+- [ ] I have linked the issue related to this PR
+- [ ] I have tested the code thoroughly and its working properly
+- [ ] I have added necessary documentation (if applicable).

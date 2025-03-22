@@ -1,4 +1,4 @@
-name: "Bug Report 🐞"
+name: "🐞 Bug Report"
 description: "Create a report to help us improve"
 title: "BUG:"
 labels: ["Bug"]
@@ -17,28 +17,22 @@ body:
         > Before posting, remove sensitive data, such as passwords, secret keys, session cookies, etc.
   - type: textarea
     attributes:
-      label: "What happened?"
-      description: "Please provide a detailed description of the issue, including the following information:"
+      label: "Issue Description ✍️"
+      description: "Please provide the issue description, including following information:"
       value: |
-        ## 📌 Issue Overview  
-        <!-- Provide a brief summary of the issue -->
-
-        ## 🔍 Steps to Reproduce  
-        1. Go to '...'  
-        2. Click on '...'  
-        3. Scroll down to '...'  
-        4. See the error  
-
-        ## 🎯 Expected Behavior  
-        <!-- What should happen? -->
+        ## 📌 Issue Summary  
+        <!-- Provide a brief summary of the issue --> 
 
         ## 🚨 Actual Behavior  
         <!-- What actually happened? -->
 
+        ## 🎯 Expected Behavior  
+        <!-- What should happen? -->
+
         ## 📷 Screenshot  
         <!-- Attach screenshots if applicable -->
 
-        ## 💡 Suggested Improvements  
+        ## 💡 Suggestions  
         <!-- Any ideas for a fix? -->
     validations:
       required: true
@@ -50,7 +44,3 @@ body:
           required: true
         - label: "I want to work on this issue"
           required: false
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report! 👍
