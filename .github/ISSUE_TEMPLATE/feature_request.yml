@@ -5,33 +5,33 @@ title: "[Feature]: "
 body:
   - type: checkboxes
     attributes:
-    label: "Is there an existing issue for this?"
-    description: "Please search to see if an issue already exists for the bug you encountered."
-    options:
-      - label: "I have searched the existing issues"
-        required: true
+      label: "Is there an existing issue for this?"
+      description: "Please search to see if an issue already exists for the bug you encountered."
+      options:
+        - label: "I have searched the existing issues"
+          required: true
   - type: textarea
     id: feature-description
     attributes:
-    label: "Issue Description ✍️"
-    description: Enter a brief description about the new feature
-    placeholder: Please include a summary, also include relevant motivation and context.
-    value: |
-      ## 📌 Feature Description  
-      <!-- Provide a brief summary of the issue --> 
+      label: "Issue Description ✍️"
+      description: Enter a brief description about the new feature
+      placeholder: Please include a summary, also include relevant motivation and context.
+      value: |
+        ## 📌 Feature Description  
+        <!-- Provide a brief summary of the issue --> 
 
-      ## 📷 Screenshot  
-      <!-- Attach screenshots if applicable -->
+        ## 📷 Screenshot  
+        <!-- Attach screenshots if applicable -->
 
-      ## 💡 Suggestions  
-      <!-- Any ideas for a fix? -->
-    validations:
-    required: true
+        ## 💡 Suggestions  
+        <!-- Any ideas for a fix? -->
+      validations:
+      required: true
   - type: checkboxes
     attributes:
-    label: "Record"
-    options:
-      - label: "I agree to follow this project's Code of Conduct"
-        required: true
-      - label: "I want to work on this issue"
-        required: false
+      label: "Record"
+      options:
+        - label: "I agree to follow this project's Code of Conduct"
+          required: true
+        - label: "I want to work on this issue"
+          required: false
