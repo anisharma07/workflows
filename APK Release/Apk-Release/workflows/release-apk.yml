@@ -172,17 +172,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          cache: ${{ steps.package-manager.outputs.manager }}
 
-      - name: Cache node_modules
+      - name: Setup PNPM (if detected)
+        if: steps.package-manager.outputs.manager == 'pnpm'
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Cache Dependencies
         uses: actions/cache@v4
         with:
           path: |
             node_modules
-            ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+            ${{ steps.package-manager.outputs.cache-path }}
+          key: ${{ runner.os }}-${{ steps.package-manager.outputs.manager }}-${{ hashFiles(format('**/{0}', steps.package-manager.outputs.lockfile)) }}
           restore-keys: |
-            ${{ runner.os }}-npm-
+            ${{ runner.os }}-${{ steps.package-manager.outputs.manager }}-
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4
@@ -195,6 +201,56 @@ jobs:
           echo "Installing dependencies with ${{ steps.package-manager.outputs.manager }}..."
           ${{ steps.package-manager.outputs.install-cmd }}
           echo "✅ Dependencies installed successfully"
+
+      - name: Setup Environment Variables
+        run: |
+          echo "🔧 Setting up environment variables..."
+
+          # Create .env file if your app requires one
+          # UNCOMMENT AND MODIFY THE LINES BELOW TO ADD YOUR ENVIRONMENT VARIABLES
+          # Replace the placeholder values with your actual environment variables
+
+          # cat > .env << EOF
+          # # API Configuration
+          # API_BASE_URL=${{ secrets.API_BASE_URL }}
+          # API_KEY=${{ secrets.API_KEY }}
+          # 
+          # # Database Configuration  
+          # DATABASE_URL=${{ secrets.DATABASE_URL }}
+          # 
+          # # Authentication
+          # JWT_SECRET=${{ secrets.JWT_SECRET }}
+          # OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }}
+          # OAUTH_CLIENT_SECRET=${{ secrets.OAUTH_CLIENT_SECRET }}
+          # 
+          # # Third-party Services
+          # FIREBASE_CONFIG=${{ secrets.FIREBASE_CONFIG }}
+          # ANALYTICS_ID=${{ secrets.ANALYTICS_ID }}
+          # 
+          # # App Configuration
+          # APP_ENV=production
+          # DEBUG=false
+          # LOG_LEVEL=info
+          # EOF
+
+          # For apps with multiple .env files (e.g., .env.production, .env.staging):
+          # cat > .env.production << EOF
+          # NODE_ENV=production
+          # API_URL=${{ secrets.PROD_API_URL }}
+          # DATABASE_URL=${{ secrets.PROD_DATABASE_URL }}
+          # EOF
+
+          # For React Native or Expo apps, you might need:
+          # cat > .env << EOF
+          # EXPO_PUBLIC_API_URL=${{ secrets.EXPO_PUBLIC_API_URL }}
+          # EXPO_PUBLIC_APP_ENV=production
+          # EOF
+
+          echo "📝 Instructions for setup:"
+          echo "1. Add your secrets to GitHub repository settings: Settings > Secrets and variables > Actions"
+          echo "2. Uncomment and modify the .env creation block above with your actual environment variables"
+          echo "3. Make sure your app's .gitignore includes .env files to keep secrets secure"
+          echo "✅ Environment setup completed (modify this step as needed for your app)"
 
       - name: Get Current Version
         id: current-version
@@ -391,7 +447,15 @@ jobs:
           # Remove sensitive files
           rm -f android/keystore.properties
           rm -f android/temp-keystore.jks
-          echo "🧹 Cleanup completed"
+
+          # Remove environment files that may contain secrets
+          rm -f .env
+          rm -f .env.production
+          rm -f .env.staging
+          rm -f .env.local
+          rm -f .env.development
+
+          echo "🧹 Cleanup completed - removed keystore and environment files"
 
       - name: Post-Release Summary
         if: steps.check-existing.outputs.skip-build == 'false'
@@ -402,7 +466,9 @@ jobs:
           APK_SIZE=$(du -h "$APK_PATH" | cut -f1)
 
           echo "## 🎉 Release Summary"
+          echo "✅ **Repository:** $REPO_NAME"
           echo "✅ **Version:** v$NEW_VERSION"
+          echo "✅ **Package Manager:** ${{ steps.package-manager.outputs.manager }}"
           echo "✅ **APK Size:** $APK_SIZE"
           echo "✅ **Release URL:** ${{ github.server_url }}/${{ github.repository }}/releases/tag/v$NEW_VERSION"
           echo "✅ **Status:** Successfully Released!"
