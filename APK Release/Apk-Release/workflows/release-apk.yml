@@ -194,7 +194,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "zulu"
-          java-version: "17"
+          java-version: "21"
 
       - name: Install Dependencies
         run: |
@@ -330,16 +330,19 @@ jobs:
       - name: Setup Keystore
         if: steps.check-existing.outputs.skip-build == 'false'
         run: |
-          # Create keystore.properties with base64 encoded keystore
+          # Decode base64 keystore and create the actual keystore file
+          echo "${{ secrets.RELEASE_KEYSTORE_BASE64 }}" | base64 -d > android/app/temp-keystore.jks
+
+          # Create keystore.properties with paths to the actual keystore file
           cat > android/keystore.properties << EOF
           # Android Release Signing Configuration
-          RELEASE_KEYSTORE_BASE64=${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_STORE_FILE=./temp-keystore.jks
           RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}
           RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}
           RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}
           EOF
 
-          echo "✅ Keystore configuration created"
+          echo "✅ Keystore file created and configuration set up"
 
       - name: Build Release APK
         if: steps.check-existing.outputs.skip-build == 'false'
