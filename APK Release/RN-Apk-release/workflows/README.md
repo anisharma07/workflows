@@ -2,7 +2,48 @@
 
 Quick setup guide for adding automated APK releases to any React Native project.
 
-## 📋 Prerequisites
+## � Workflow Process Flow
+
+```mermaid
+flowchart TD
+    A[PR with release trigger] --> B{Check Conditions}
+    B -->|Has release label/title| C[Start Release Process]
+    B -->|No release trigger| D[Skip Release]
+
+    C --> E[Setup Environment]
+    E --> F[Install Dependencies]
+    F --> G[Version Management]
+    G --> H[Build APK]
+    H --> I[Create Release]
+    I --> J[Upload APK]
+    J --> K[Cleanup]
+
+    subgraph "Environment Setup"
+        E --> E1[Node.js 20]
+        E --> E2[Java JDK 17]
+        E --> E3[Package Manager Detection]
+    end
+
+    subgraph "Version Management"
+        G --> G1[Get Current Version]
+        G --> G2[Calculate New Version]
+        G --> G3[Update Files]
+    end
+
+    subgraph "APK Build"
+        H --> H1[Setup Keystore]
+        H --> H2[Configure Signing]
+        H --> H3[Build Release APK]
+    end
+
+    subgraph "Release Creation"
+        I --> I1[Create Git Tag]
+        I --> I2[Generate Release Notes]
+        I --> I3[Create GitHub Release]
+    end
+```
+
+## �📋 Prerequisites
 
 - React Native project with `android/` folder
 - GitHub repository
